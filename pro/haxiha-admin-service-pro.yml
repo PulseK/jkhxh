@@ -7,41 +7,46 @@ elasticsearch:
 eureka:
     instance:
         prefer-ip-address: true
+		instance-id: ${spring.cloud.client.ipAddress}:${server.port}:${spring.application.name}
 feign:
     httpclient:
         enabled: true
 oss:
     access:
-        key: LTAI
-        secret: ARE
+        key: LTAI  #阿里云API的密钥Access Key ID
+        secret: ARE  #阿里云API的密钥Access Key Secret
     bucket:
-        name: dev-saas-haxiha
-    endpoint: http://oss-cn-hangzhou.aliyuncs.com
+        name: dev-saas-haxiha  #阿里云API的bucket名称
+    endpoint: http://oss-cn-hangzhou.aliyuncs.com  #阿里云API的内或外网域名
 haxiha:
     appid: 
-        nocheck: 1
+        nocheck: 1  #不需要检查的APPID
     url:
-        nocheck: /setting/menu/updateJson,/member/user/newPwd,/member/invitecode/checkValid,/wechat/event,/sales/marketing/keyword,goods/category/recommend,/setting/area/json,/marketing/advertslist/position,/setting/saas/info,/sales/marketing/activity,/marketing/goodsposition/position,/setting/area/defualt,/member/user/forget_pwd,/search,/home,/marketing/articlelist,/user/login,/user/wxlogin,/msgcode,/captcha,/register,/callback/notify,/callback/return,/callback/notify/refund,base/alldic,/onPay,order/api/paysuccess,/allinpay/callback/pickupUrl,sales/coupon/canGrant,/bench/fx,/marketing/goodsgroup/actlist,/marketing/goodsgroup/actGoodsList,/marketing/goodsgroup/listAll,/goods/data/migrate,/admin/user/login,/admin/user/captcha
+        nocheck: /setting/menu/updateJson,/member/user/newPwd,/member/invitecode/checkValid,/wechat/event,/sales/marketing/keyword,goods/category/recommend,/setting/area/json,/marketing/advertslist/position,/setting/saas/info,/sales/marketing/activity,/marketing/goodsposition/position,/setting/area/defualt,/member/user/forget_pwd,/search,/home,/marketing/articlelist,/user/login,/user/wxlogin,/msgcode,/captcha,/register,/callback/notify,/callback/return,/callback/notify/refund,base/alldic,/onPay,order/api/paysuccess,/allinpay/callback/pickupUrl,sales/coupon/canGrant,/bench/fx,/marketing/goodsgroup/actlist,/marketing/goodsgroup/actGoodsList,/marketing/goodsgroup/listAll,/goods/data/migrate,/admin/user/login,/admin/user/captcha  #不要拦截的地址
     upload:
-        mode: oss
+        mode: oss  #本地上传local与阿里云oss上传标记
     storage:
-        path: /data/haxiha/img
+        path: /data/haxiha/img  #物理路径
     access:
-        path: http://img.dev.haxiha.com
+        path: http://img.dev.haxiha.com #访问路径
     staff: 
-        mobile: 17792754650
+        mobile: 17792754650  #member模块
 logging:
     level:
         com:
-            haxiha: DEBUG
+            haxiha: DEBUG  #日志级别 
+
+#mybatis配置
 mybatis:
     configuration:
         mapUnderscoreToCamelCase: true
+	typeAliasesPackage: com.haxiha.**.domain
+    mapperLocations: classpath*:com/haxiha/**/*.xml
 
 public-key: MFwwDQYJKoZI
 spring:
     application:
-        env: pre
+        env: pre  
     jackson:
         date-format: yyyy-MM-dd HH:mm:ss
         time-zone: GMT+8
@@ -55,7 +60,7 @@ spring:
     mail:
         host: smtp.ym.163.com
         port: 25
-        username: no@haxiha.com
+        username: no@haxiha.com  #邮箱日志提醒  未开启
         password: 9
         properties:
             mail:
@@ -68,9 +73,10 @@ spring:
         admin:
             notify:
                 mail:
-                    from: no@haxiha.com
+                    from: no@haxiha.com  #EmailConfig类
                     to: luo@haxiha.com
                     enabled: false
+	#数据库配置
     datasource:
         driverClassName: com.mysql.jdbc.Driver
         filters: 'stat,wall,log4j  '
@@ -90,6 +96,7 @@ spring:
         url: jdbc:mysql://172.16.1.101:3306/spring?useUnicode=true&characterEncoding=UTF-8
         username: root
         validationQuery: 'SELECT 1 FROM DUAL  '
+	#redis配置
     redis:
         database: 0
         cluster:
@@ -101,6 +108,7 @@ spring:
             max-idle: 8
             max-wait: -1
         timeout: 0
+	#stream kafka
     stream:
         kafka:
             binder:
@@ -145,14 +153,14 @@ spring:
         sampler:
             percentage: 1.0
     zipkin:
-        base-url: http://${spring.cloud.client.ipAddress}:16888
+        base-url: http://${spring.cloud.client.ipAddress}:7046
 swagger:
     base-package: com.haxiha
     base-path: /**
     contact:
-        email: su@haxiha.com
-        name: haxiha
-        url: http://www.haxiha.com
+        email: 292224657@qq.com
+        name: junkai
+        url: http://www.jkslw.com
     description: Starter for swagger 2.x
     exclude-path: /error, /ops/**
     license: Apache License, Version 2.0
