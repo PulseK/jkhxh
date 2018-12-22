@@ -7,34 +7,45 @@ elasticsearch:
 eureka:
     instance:
         prefer-ip-address: true
-	instance-id: ${spring.cloud.client.ipAddress}:${server.port}:${spring.application.name}
+	    instance-id: ${spring.cloud.client.ipAddress}:${server.port}:${spring.application.name}
 feign:
     httpclient:
         enabled: true
 oss:
     access:
-        key: LTAI  #阿里云API的密钥Access Key ID
-        secret: ARE  #阿里云API的密钥Access Key Secret
+        #阿里云API的密钥Access Key ID
+        key: LTAI  
+        #阿里云API的密钥Access Key Secret
+        secret: ARE  
+    #阿里云API的bucket名称
     bucket:
-        name: dev-saas-haxiha  #阿里云API的bucket名称
-    endpoint: http://oss-cn-hangzhou.aliyuncs.com  #阿里云API的内或外网域名
+        name: dev-saas-haxiha  
+    #阿里云API的内或外网域名
+    endpoint: http://oss-cn-hangzhou.aliyuncs.com  
 haxiha:
+    #不需要检查的APPID
     appid: 
-        nocheck: 1  #不需要检查的APPID
+        nocheck: 1  
+    #不要拦截的地址
     url:
-        nocheck: /setting/menu/updateJson,/member/user/newPwd,/member/invitecode/checkValid,/wechat/event,/sales/marketing/keyword,goods/category/recommend,/setting/area/json,/marketing/advertslist/position,/setting/saas/info,/sales/marketing/activity,/marketing/goodsposition/position,/setting/area/defualt,/member/user/forget_pwd,/search,/home,/marketing/articlelist,/user/login,/user/wxlogin,/msgcode,/captcha,/register,/callback/notify,/callback/return,/callback/notify/refund,base/alldic,/onPay,order/api/paysuccess,/allinpay/callback/pickupUrl,sales/coupon/canGrant,/bench/fx,/marketing/goodsgroup/actlist,/marketing/goodsgroup/actGoodsList,/marketing/goodsgroup/listAll,/goods/data/migrate,/admin/user/login,/admin/user/captcha  #不要拦截的地址
+        nocheck: /setting/menu/updateJson,/member/user/newPwd,/member/invitecode/checkValid,/wechat/event,/sales/marketing/keyword,goods/category/recommend,/setting/area/json,/marketing/advertslist/position,/setting/saas/info,/sales/marketing/activity,/marketing/goodsposition/position,/setting/area/defualt,/member/user/forget_pwd,/search,/home,/marketing/articlelist,/user/login,/user/wxlogin,/msgcode,/captcha,/register,/callback/notify,/callback/return,/callback/notify/refund,base/alldic,/onPay,order/api/paysuccess,/allinpay/callback/pickupUrl,sales/coupon/canGrant,/bench/fx,/marketing/goodsgroup/actlist,/marketing/goodsgroup/actGoodsList,/marketing/goodsgroup/listAll,/goods/data/migrate,/admin/user/login,/admin/user/captcha  
+    #本地上传local与阿里云oss上传标记
     upload:
-        mode: oss  #本地上传local与阿里云oss上传标记
+        mode: oss  
+    #物理路径
     storage:
-        path: /data/haxiha/img  #物理路径
+        path: /data/haxiha/img  
+    #访问路径
     access:
-        path: http://img.dev.haxiha.com #访问路径
+        path: http://img.dev.haxiha.com 
+    #member模块
     staff: 
-        mobile: 17792754650  #member模块
+        mobile: 17792754650  
+#日志级别 
 logging:
     level:
         com:
-            haxiha: DEBUG  #日志级别 
+            haxiha: DEBUG  
 mybatis:
     configuration:
         mapUnderscoreToCamelCase: true
@@ -55,10 +66,11 @@ spring:
         multipart:
             maxFileSize: 15MB
             maxRequestSize: 15MB
+    #邮箱日志提醒  未开启
     mail:
         host: smtp.ym.163.com
         port: 25
-        username: no@haxiha.com  #邮箱日志提醒  未开启
+        username: no@haxiha.com  
         password: 9
         properties:
             mail:
@@ -70,8 +82,9 @@ spring:
     boot:
         admin:
             notify:
+                #EmailConfig类
                 mail:
-                    from: no@haxiha.com  #EmailConfig类
+                    from: no@haxiha.com  
                     to: luo@haxiha.com
                     enabled: false					
     datasource:
