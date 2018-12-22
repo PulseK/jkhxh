@@ -160,10 +160,16 @@ spring:
             key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
             value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     sleuth:
+        #监控开关
+        enabled: true
+        #采样率
         sampler:
-            percentage: 1.0
+            percentage: 1  
     zipkin:
         base-url: http://${spring.cloud.client.ipAddress}:7046
+        #本项目服务名
+        service:
+           name: ${spring.application.name}
 swagger:
     base-package: com.haxiha
     base-path: /**
