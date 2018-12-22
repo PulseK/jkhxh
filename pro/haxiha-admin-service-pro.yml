@@ -184,3 +184,8 @@ swagger:
     termsOfServiceUrl: https://github.com/dyc87112/spring-boot-starter-swagger
     title: spring-boot-starter-swagger
     version: 1.1.0.RELEASE
+info:
+    group: 君凯技术中心
+    description: 人生快不快乐看心情，幸不幸福看心态。漫长人生中，什么都不是一眼看到头的，一时的春风得意算不了什么，一时的失败也不能算数。觉得自己做得到和做不到，只在一念之间。
+    members: all boys
+    tell: 400-900-2165
