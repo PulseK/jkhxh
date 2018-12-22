@@ -63,26 +63,26 @@ spring:
         bus:
             enabled: true
 		stream:
-			kafka:
-				binder:
-					brokers: 172.16.1.244:9092
-					zk-nodes: 172.16.1.244:2181
-					minPartitionCount: 1
-					autoCreateTopics: true
-					autoAddPartitions: true
-			bindings:
-				goods:
-					destination: haxiha-goods
-					group: goods
-					consumer:
-						concurrency: 1
-						partitioned: false
-				order:
-					destination: haxiha-order
-					group: order
-					consumer:
-						concurrency: 1
-						partitioned: false
+		  kafka:
+			  binder:
+                brokers: 172.16.1.244:9092
+                zk-nodes: 172.16.1.244:2181
+                minPartitionCount: 1
+                autoCreateTopics: true
+                autoAddPartitions: true
+		  bindings:
+			goods:
+              destination: haxiha-goods
+              group: goods
+              consumer:
+                  concurrency: 1
+                  partitioned: false
+            order:
+                destination: haxiha-order
+                group: order
+                consumer:
+                    concurrency: 1
+                    partitioned: false
     http:
         multipart:
             maxFileSize: 15MB
@@ -140,7 +140,7 @@ spring:
             max-wait: -1
         timeout: 0
 
-    
+
     kafka:
         bootstrap-servers: 172.16.1.244:9092
         custom-producer:
@@ -165,7 +165,7 @@ spring:
         enabled: true
         #采样率
         sampler:
-            percentage: 1  
+            percentage: 1
     zipkin:
         base-url: http://${spring.cloud.client.ipAddress}:7046
         #本项目服务名
