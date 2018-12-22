@@ -7,7 +7,7 @@ elasticsearch:
 eureka:
     instance:
         prefer-ip-address: true
-		instance-id: ${spring.cloud.client.ipAddress}:${server.port}:${spring.application.name}
+	instance-id: ${spring.cloud.client.ipAddress}:${server.port}:${spring.application.name}
 feign:
     httpclient:
         enabled: true
@@ -40,7 +40,7 @@ logging:
 mybatis:
     configuration:
         mapUnderscoreToCamelCase: true
-	typeAliasesPackage: com.haxiha.**.domain
+    typeAliasesPackage: com.haxiha.**.domain
     mapperLocations: classpath*:com/haxiha/**/*.xml
 
 public-key: MFwwDQYJKoZI
