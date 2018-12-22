@@ -62,27 +62,27 @@ spring:
     cloud:
         bus:
             enabled: true
-		stream:
-		  kafka:
-			  binder:
-                brokers: 172.16.1.244:9092
-                zk-nodes: 172.16.1.244:2181
-                minPartitionCount: 1
-                autoCreateTopics: true
-                autoAddPartitions: true
-		  bindings:
-			goods:
-              destination: haxiha-goods
-              group: goods
-              consumer:
-                  concurrency: 1
-                  partitioned: false
-            order:
-                destination: haxiha-order
-                group: order
-                consumer:
-                    concurrency: 1
-                    partitioned: false
+        stream:
+            bindings: 
+                goods:
+                    destination: haxiha-goods
+                    group: goods
+                    consumer:
+                        concurrency: 1
+                        partitioned: false
+                order:
+                    destination: haxiha-order
+                    group: order
+                    consumer:
+                        concurrency: 1
+                        partitioned: false
+            kafka:
+                 binder:
+                    brokers: 172.16.1.244:9092
+                    zk-nodes: 172.16.1.244:2181
+                    minPartitionCount: 1
+                    autoCreateTopics: true
+                    autoAddPartitions: true   
     http:
         multipart:
             maxFileSize: 15MB
