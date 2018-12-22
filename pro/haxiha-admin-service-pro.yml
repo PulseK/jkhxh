@@ -35,8 +35,6 @@ logging:
     level:
         com:
             haxiha: DEBUG  #日志级别 
-
-#mybatis配置
 mybatis:
     configuration:
         mapUnderscoreToCamelCase: true
@@ -76,7 +74,7 @@ spring:
                     from: no@haxiha.com  #EmailConfig类
                     to: luo@haxiha.com
                     enabled: false
-	#数据库配置
+					
     datasource:
         driverClassName: com.mysql.jdbc.Driver
         filters: 'stat,wall,log4j  '
@@ -96,7 +94,7 @@ spring:
         url: jdbc:mysql://172.16.1.101:3306/spring?useUnicode=true&characterEncoding=UTF-8
         username: root
         validationQuery: 'SELECT 1 FROM DUAL  '
-	#redis配置
+
     redis:
         database: 0
         cluster:
@@ -108,7 +106,7 @@ spring:
             max-idle: 8
             max-wait: -1
         timeout: 0
-	#stream kafka
+
     stream:
         kafka:
             binder:
